@@ -1,0 +1,97 @@
+.menu-opener {
+	width: 24px;
+	height: 24px;
+	position: relative;
+	z-index: 0;
+	margin-right:20px;
+	display: inline-block;
+	vertical-align: middle;
+	cursor:pointer;
+}
+.menu-opener .menu-opener__bit-1::before {
+	content: '';
+	left: 0px;
+	top: 4px;
+	position: absolute;
+	width: 12px;
+	transform-origin: left bottom;
+	height: 2px;
+	background: @black-color;
+	transition: transform 0.3s, top 0.3s;
+}
+.menu-opener .menu-opener__bit-1::after {
+	content: '';
+	position: absolute;
+	right: 0px;
+	top: 4px;
+	width: 12px;
+	transform-origin: right bottom;
+	height: 2px;
+	background: @black-color;
+	transition: transform 0.3s, top 0.3s;
+}
+.menu-opener .menu-opener__bit-2 {
+	position: absolute;
+	width: 24px;
+	top: 50%;
+	left: 50%;
+	height: 2px;
+	background: @black-color;
+	transform: translate(-50%, -50%);
+	transition: transform 0.3s 0.3s, width 0.3s 0.6s;
+}
+.menu-opener .menu-opener__bit-3::before {
+	content: '';
+	position: absolute;
+	bottom: 4px;
+	left: 0px;
+	width: 12px;
+	transform-origin: left top;
+	height: 2px;
+	background: @black-color;
+	transition: transform 0.3s, bottom 0.3s;
+}
+.menu-opener .menu-opener__bit-3::after {
+	content: '';
+	position: absolute;
+	bottom: 4px;
+	right: 0px;
+	width: 12px;
+	transform-origin: right top;
+	height: 2px;
+	background: @black-color;
+	transition: transform 0.3s, bottom 0.3s;
+}
+.menu-opener.menu-opener__open .menu-opener__bit-1:before {
+	top: 0px;
+	width: 16px;
+	transform: rotate(45deg);
+	transform-origin: left bottom;
+	transition: transform 0.3s 0.3s, width 0.3s 0.3s, top 0.3s 0.3s;
+}
+.menu-opener.menu-opener__open .menu-opener__bit-1:after {
+	top: 0px;
+	width: 16px;
+	transform: rotate(-45deg);
+	transform-origin: right bottom;
+	transition: transform 0.3s 0.3s, width 0.3s 0.3s, top 0.3s 0.3s;
+}
+.menu-opener.menu-opener__open .menu-opener__bit-2 {
+	width: 0px;
+	transform: translate(-50%, -50%) rotate(45deg);
+	transition: transform 0.3s 0.3s, width 0.3s;
+}
+.menu-opener.menu-opener__open .menu-opener__bit-3:before {
+	bottom: 0px;
+	width: 16px;
+	transform: rotate(-45deg);
+	transform-origin: left top;
+	transition: transform 0.3s 0.3s, width 0.3s 0.3s, bottom 0.3s 0.3s;
+}
+.menu-opener.menu-opener__open .menu-opener__bit-3:after {
+	bottom: 0px;
+	width: 16px;
+	transform: rotate(45deg);
+	transform-origin: right top;
+	transition: transform 0.3s 0.3s, width 0.3s 0.3s, bottom 0.3s 0.3s;
+}

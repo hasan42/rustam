@@ -1,0 +1,30 @@
+.portfolio-item__name {
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	display: table;
+	margin: 0 auto;
+	text-align: center;
+	overflow: hidden;
+	vertical-align: middle;
+	opacity: 0;
+	transition: opacity 0.3s 0s;
+	background-color: @black-color;
+	color: @white-color;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 3px;
+	a {
+		display: table-cell;
+		vertical-align: middle;
+		color: @white-color;
+	}
+	&:hover, &:focus, &:active {
+		opacity: 1;
+	}
+}

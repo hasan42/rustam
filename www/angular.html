@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="purchaseApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone=no" />
+    
+	<title>Верстка - iRustam</title> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="js/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css" />
+	<link rel="stylesheet" type="text/css" href="css/easydropdown.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/media.css" />
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="js/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easydropdown.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body ng-controller="purchaseController">
+    <div class="page-header">
+        <h1> Список покупок </h1>
+    </div>
+    <div class="panel">
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="text" placeholder = "Название" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <input type="number" class="form-control" ng-model="price" placeholder="Цена" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-8">
+                    <button class="btn btn-default" ng-click="addItem(text, price)">Добавить</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Предмет</th>
+                    <th>Цена</th>
+                    <th>Куплено</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in list.items">
+                    <td>{{item.purchase}}</td>
+                    <td>{{item.price}}</td>
+                    <td><input type="checkbox" ng-model="item.done" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<script>
+var model = {
+    items: [
+        { purchase: "Хлеб", done: false, price: 15.9 },
+        { purchase: "Масло", done: false, price: 60 },
+        { purchase: "Картофель", done: true, price: 22.6 },
+        { purchase: "Сыр", done: false, price:310 }
+    ]
+};
+var purchaseApp = angular.module("purchaseApp", []);
+    purchaseApp.controller("purchaseController", function ($scope) {
+    $scope.list = model;
+    $scope.addItem = function (text, price) {
+        price = parseFloat(price); // преобразуем введенное значение к числу
+        if(text != "" && !isNaN(price)) // если текст установлен и введено число, то добавляем
+        {
+            $scope.list.items.push({ purchase: text, price: price, done: false });
+        }
+    }
+});
+</script>
+</body>
+</html>
